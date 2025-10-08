@@ -152,6 +152,19 @@
                 overflow-y: auto;
             }
         }
+
+        /* Accordion styles for booking form */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Adjust as needed */
+            padding-top: 1.5rem;
+        }
     </style>
 </head>
 <body class="h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 font-sans">
@@ -261,84 +274,6 @@
                 <div class="fade-in bg-gradient-to-br from-green-50 to-blue-50 p-4 sm:p-6 rounded-2xl">
                     <div class="text-2xl sm:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2" id="total-bookings">0</div>
                     <div class="text-xs sm:text-base text-gray-600">Total Booking</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Layanan Kami</h2>
-                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Kami menyediakan berbagai layanan terbaik untuk memenuhi kebutuhan perjalanan Anda</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-truck-pickup"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Antar Jemput</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Layanan antar jemput motor ke lokasi Anda tanpa biaya tambahan dalam radius 10km</p>
-                    <div class="text-center">
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">GRATIS</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Asuransi</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Semua motor dilengkapi asuransi komprehensif untuk keamanan perjalanan Anda</p>
-                    <div class="text-center">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">TERMASUK</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Maintenance</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Motor selalu dalam kondisi prima dengan perawatan rutin dan pengecekan berkala</p>
-                    <div class="text-center">
-                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">TERJAMIN</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Booking Online</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Sistem booking online 24/7 dengan konfirmasi instan dan pembayaran fleksibel</p>
-                    <div class="text-center">
-                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">24/7</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">GPS Tracking</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Fitur GPS tracking untuk keamanan dan memudahkan navigasi perjalanan Anda</p>
-                    <div class="text-center">
-                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">CANGGIH</span>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
-                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Customer Support</h3>
-                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Tim customer support yang siap membantu Anda kapan saja selama perjalanan</p>
-                    <div class="text-center">
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">RESPONSIF</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -532,147 +467,172 @@
             </div>
 
             <div class="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 md:p-12">
-                <form id="booking-form" class="space-y-6 sm:space-y-8">
+                <form id="booking-form" class="space-y-4">
                     <!-- Personal Information -->
-                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <i class="fas fa-user mr-3 text-indigo-600"></i>Informasi Pribadi
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                                <input type="text" id="customer-name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
-                                <input type="tel" id="customer-phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                            </div>
+                    <div class="accordion-item bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl overflow-hidden active">
+                        <div class="accordion-header cursor-pointer p-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i class="fas fa-user mr-3 text-indigo-600"></i>Informasi Pribadi
+                            </h3>
+                            <i class="fas fa-chevron-down transition-transform"></i>
                         </div>
-                        <div class="mt-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email" id="customer-email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                        </div>
-                        <div class="mt-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Nomor KTP</label>
-                            <input type="text" id="customer-ktp" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan 16 digit nomor KTP">
+                        <div class="accordion-content px-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                                    <input type="text" id="customer-name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
+                                    <input type="tel" id="customer-phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" id="customer-email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                            </div>
+                            <div class="mt-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor KTP</label>
+                                <input type="text" id="customer-ktp" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan 16 digit nomor KTP">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Motor Selection -->
-                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <i class="fas fa-motorcycle mr-3 text-indigo-600"></i>Pilihan Motor
-                        </h3>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Motor</label>
-                            <select id="selected-motor" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                                <option value="">-- Pilih Motor --</option>
-                            </select>
+                    <div class="accordion-item bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl overflow-hidden">
+                        <div class="accordion-header cursor-pointer p-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i class="fas fa-motorcycle mr-3 text-indigo-600"></i>Pilihan Motor
+                            </h3>
+                            <i class="fas fa-chevron-down transition-transform"></i>
                         </div>
-                        <div id="motor-details" class="mt-4 p-4 bg-white rounded-xl hidden">
-                            <!-- Motor details will be shown here -->
+                        <div class="accordion-content px-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Motor</label>
+                                <select id="selected-motor" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                    <option value="">-- Pilih Motor --</option>
+                                </select>
+                            </div>
+                            <div id="motor-details" class="mt-4 p-4 bg-white rounded-xl hidden">
+                                <!-- Motor details will be shown here -->
+                            </div>
                         </div>
                     </div>
 
                     <!-- Rental Period -->
-                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <i class="fas fa-calendar-alt mr-3 text-indigo-600"></i>Periode Rental
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Mulai</label>
-                                <input type="date" id="start-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Selesai</label>
-                                <input type="date" id="end-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                            </div>
+                    <div class="accordion-item bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl overflow-hidden">
+                        <div class="accordion-header cursor-pointer p-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i class="fas fa-calendar-alt mr-3 text-indigo-600"></i>Periode Rental
+                            </h3>
+                            <i class="fas fa-chevron-down transition-transform"></i>
                         </div>
-                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengambilan</label>
-                                <select id="pickup-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                                    <option value="">-- Pilih Jam --</option>
-                                    <option value="08:00">08:00 WIB</option>
-                                    <option value="09:00">09:00 WIB</option>
-                                    <option value="10:00">10:00 WIB</option>
-                                    <option value="11:00">11:00 WIB</option>
-                                    <option value="12:00">12:00 WIB</option>
-                                    <option value="13:00">13:00 WIB</option>
-                                    <option value="14:00">14:00 WIB</option>
-                                    <option value="15:00">15:00 WIB</option>
-                                    <option value="16:00">16:00 WIB</option>
-                                    <option value="17:00">17:00 WIB</option>
-                                </select>
+                        <div class="accordion-content px-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Mulai</label>
+                                    <input type="date" id="start-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Selesai</label>
+                                    <input type="date" id="end-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengembalian</label>
-                                <select id="return-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
-                                    <option value="">-- Pilih Jam --</option>
-                                    <option value="08:00">08:00 WIB</option>
-                                    <option value="09:00">09:00 WIB</option>
-                                    <option value="10:00">10:00 WIB</option>
-                                    <option value="11:00">11:00 WIB</option>
-                                    <option value="12:00">12:00 WIB</option>
-                                    <option value="13:00">13:00 WIB</option>
-                                    <option value="14:00">14:00 WIB</option>
-                                    <option value="15:00">15:00 WIB</option>
-                                    <option value="16:00">16:00 WIB</option>
-                                    <option value="17:00">17:00 WIB</option>
-                                </select>
+                            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengambilan</label>
+                                    <select id="pickup-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                        <option value="">-- Pilih Jam --</option>
+                                        <option value="08:00">08:00 WIB</option>
+                                        <option value="09:00">09:00 WIB</option>
+                                        <option value="10:00">10:00 WIB</option>
+                                        <option value="11:00">11:00 WIB</option>
+                                        <option value="12:00">12:00 WIB</option>
+                                        <option value="13:00">13:00 WIB</option>
+                                        <option value="14:00">14:00 WIB</option>
+                                        <option value="15:00">15:00 WIB</option>
+                                        <option value="16:00">16:00 WIB</option>
+                                        <option value="17:00">17:00 WIB</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengembalian</label>
+                                    <select id="return-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                        <option value="">-- Pilih Jam --</option>
+                                        <option value="08:00">08:00 WIB</option>
+                                        <option value="09:00">09:00 WIB</option>
+                                        <option value="10:00">10:00 WIB</option>
+                                        <option value="11:00">11:00 WIB</option>
+                                        <option value="12:00">12:00 WIB</option>
+                                        <option value="13:00">13:00 WIB</option>
+                                        <option value="14:00">14:00 WIB</option>
+                                        <option value="15:00">15:00 WIB</option>
+                                        <option value="16:00">16:00 WIB</option>
+                                        <option value="17:00">17:00 WIB</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Location -->
-                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3 text-indigo-600"></i>Lokasi
-                        </h3>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengambilan</label>
-                            <textarea id="pickup-address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengambilan motor"></textarea>
+                    <div class="accordion-item bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl overflow-hidden">
+                        <div class="accordion-header cursor-pointer p-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i class="fas fa-map-marker-alt mr-3 text-indigo-600"></i>Lokasi
+                            </h3>
+                            <i class="fas fa-chevron-down transition-transform"></i>
                         </div>
-                        <div class="mt-4">
-                            <label class="flex items-center">
-                                <input type="checkbox" id="same-return-address" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-2 text-sm text-gray-700">Alamat pengembalian sama dengan pengambilan</span>
-                            </label>
-                        </div>
-                        <div id="return-address-section" class="mt-4">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengembalian</label>
-                            <textarea id="return-address" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengembalian motor"></textarea>
+                        <div class="accordion-content px-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengambilan</label>
+                                <textarea id="pickup-address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengambilan motor"></textarea>
+                            </div>
+                            <div class="mt-4">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="same-return-address" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <span class="ml-2 text-sm text-gray-700">Alamat pengembalian sama dengan pengambilan</span>
+                                </label>
+                            </div>
+                            <div id="return-address-section" class="mt-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengembalian</label>
+                                <textarea id="return-address" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengembalian motor"></textarea>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Additional Services -->
-                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                            <i class="fas fa-plus-circle mr-3 text-indigo-600"></i>Layanan Tambahan
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
-                                <input type="checkbox" id="helmet-extra" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-3 text-sm text-gray-700">Helm Tambahan (+Rp 10.000/hari)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
-                                <input type="checkbox" id="raincoat" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-3 text-sm text-gray-700">Jas Hujan (+Rp 15.000/hari)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
-                                <input type="checkbox" id="phone-holder" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-3 text-sm text-gray-700">Phone Holder (+Rp 5.000/hari)</span>
-                            </label>
-                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
-                                <input type="checkbox" id="top-box" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                <span class="ml-3 text-sm text-gray-700">Top Box (+Rp 20.000/hari)</span>
-                            </label>
+                    <div class="accordion-item bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl overflow-hidden">
+                        <div class="accordion-header cursor-pointer p-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i class="fas fa-plus-circle mr-3 text-indigo-600"></i>Layanan Tambahan
+                            </h3>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </div>
+                        <div class="accordion-content px-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" id="helmet-extra" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <span class="ml-3 text-sm text-gray-700">Helm Tambahan (+Rp 10.000/hari)</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" id="raincoat" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <span class="ml-3 text-sm text-gray-700">Jas Hujan (+Rp 15.000/hari)</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" id="phone-holder" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <span class="ml-3 text-sm text-gray-700">Phone Holder (+Rp 5.000/hari)</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                    <input type="checkbox" id="top-box" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                    <span class="ml-3 text-sm text-gray-700">Top Box (+Rp 20.000/hari)</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Booking Summary -->
-                    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-2xl">
+                    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-2xl mt-4">
                         <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
                             <i class="fas fa-receipt mr-3 text-indigo-600"></i>Ringkasan Booking
                         </h3>
@@ -681,7 +641,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-2xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-2xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg mt-8">
                         <i class="fas fa-check-circle mr-2"></i>Konfirmasi Booking
                     </button>
                 </form>
@@ -1199,6 +1159,7 @@
             setMinDate();
             animateStats();
             setupChatBot();
+            setupAccordion();
             setupStarRating();
         });
 
@@ -1448,6 +1409,29 @@
             // Form submission
             document.getElementById('booking-form').addEventListener('submit', handleBookingSubmit);
             document.getElementById('review-form').addEventListener('submit', handleReviewSubmit);
+        }
+
+        // Setup accordion for booking form
+        function setupAccordion() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.accordion-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                        currentlyActive.querySelector('.fa-chevron-down').classList.remove('rotate-180');
+                    }
+
+                    item.classList.toggle('active');
+                    const icon = item.querySelector('.fa-chevron-down');
+                    if (item.classList.contains('active')) {
+                        icon.classList.add('rotate-180');
+                    } else {
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
         }
 
         // Scroll to section
