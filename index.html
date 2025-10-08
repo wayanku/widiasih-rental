@@ -182,24 +182,19 @@
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-14 sm:h-16">
-                <div class="flex items-center">
+            <div xdiv class="flex items-center">
                     <div class="text-lg sm:text-2xl font-bold gradient-text">
-                        <i class="fas fa-motorcycle mr-2"></i><span class="hidden xs:inline">Widiasih Motor</span><span class="xs:hidden">WM</span>
+                        <i class="fas fa-motorcycle mr-2"></i><span class="hidden sm:inline">Widiasih Motor</span><span class="sm:hidden">WM</span>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Beranda</a>
                         <a href="#motors" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Motor</a>
-                        <a href="#services" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Layanan</a>
                         <a href="#gallery" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
                         <a href="#testimonials" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Testimoni</a>
                         <a href="#booking" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Booking</a>
                         <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Kontak</a>
-                        <button onclick="toggleAdminDashboard()" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-indigo-700 hover:to-purple-700 transition-all">
-                            <i class="fas fa-cog mr-2"></i>Admin
-                        </button>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -215,14 +210,10 @@
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t">
                 <a href="#home" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Beranda</a>
                 <a href="#motors" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Motor</a>
-                <a href="#services" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Layanan</a>
                 <a href="#gallery" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Galeri</a>
                 <a href="#testimonials" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Testimoni</a>
                 <a href="#booking" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Booking</a>
                 <a href="#contact" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Kontak</a>
-                <button onclick="toggleAdminDashboard()" class="w-full text-left bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-md text-base font-medium hover:from-indigo-700 hover:to-purple-700 transition-all touch-button">
-                    <i class="fas fa-cog mr-2"></i>Admin Dashboard
-                </button>
             </div>
         </div>
     </nav>
@@ -1161,6 +1152,7 @@
             setupChatBot();
             setupAccordion();
             setupStarRating();
+            handleAdminAccess(); // Check for admin access on load
         });
 
         // Animate statistics
@@ -1409,6 +1401,7 @@
             // Form submission
             document.getElementById('booking-form').addEventListener('submit', handleBookingSubmit);
             document.getElementById('review-form').addEventListener('submit', handleReviewSubmit);
+            window.addEventListener('hashchange', handleAdminAccess); // Check for admin access on hash change
         }
 
         // Setup accordion for booking form
@@ -1812,6 +1805,21 @@
             document.getElementById('review-form').reset();
             currentRating = 0;
             updateStarDisplay();
+        }
+
+        // Handle Admin Access with Password
+        function handleAdminAccess() {
+            if (window.location.hash === '#admin') {
+                const password = prompt("Masukkan kata sandi admin:");
+                const ADMIN_PASSWORD = 'admin123'; // Anda bisa mengubah kata sandi ini
+
+                if (password === ADMIN_PASSWORD) {
+                    toggleAdminDashboard();
+                } else if (password !== null) { // User didn't click cancel
+                    alert("Kata sandi salah. Akses ditolak.");
+                }
+                window.location.hash = ''; // Clear hash to prevent re-prompt on refresh
+            }
         }
 
         // Admin Dashboard Functions
