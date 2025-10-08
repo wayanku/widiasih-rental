@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widiasih Motor - Rental Motor Premium Terpercaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .motor-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .motor-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(.33); }
+            80%, 100% { opacity: 0; }
+        }
+        
+        .chat-bubble {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 font-sans">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center z-50">
+        <div class="text-center text-white">
+            <div class="text-6xl mb-4 floating">🏍️</div>
+            <h1 class="text-3xl font-bold mb-4">Widiasih Motor</h1>
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold gradient-text">🏍️ Widiasih Motor</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Beranda</a>
+                        <a href="#motors" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Motor</a>
+                        <a href="#services" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Layanan</a>
+                        <a href="#gallery" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Galeri</a>
+                        <a href="#testimonials" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Testimoni</a>
+                        <a href="#booking" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Booking</a>
+                        <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Kontak</a>
+                        <button onclick="toggleAdminDashboard()" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-indigo-700 hover:to-purple-700 transition-all">
+                            <i class="fas fa-cog mr-2"></i>Admin
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/90 backdrop-blur-md border-t">
+                <a href="#home" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                <a href="#motors" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Motor</a>
+                <a href="#services" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+                <a href="#gallery" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Galeri</a>
+                <a href="#testimonials" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Testimoni</a>
+                <a href="#booking" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Booking</a>
+                <a href="#contact" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full floating"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-white opacity-10 rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white opacity-10 rounded-full floating" style="animation-delay: 2s;"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-8xl mb-6 floating">🏍️</div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Widiasih Motor</h1>
+                <p class="text-xl md:text-3xl mb-8 fade-in">Rental Motor Premium dengan Layanan Terbaik</p>
+                <p class="text-lg md:text-xl mb-12 opacity-90 fade-in">Nikmati perjalanan tak terlupakan dengan armada motor terlengkap dan berkualitas tinggi</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
+                    <button onclick="scrollToSection('motors')" class="bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-motorcycle mr-2"></i>Lihat Motor Tersedia
+                    </button>
+                    <button onclick="scrollToSection('booking')" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-calendar-check mr-2"></i>Booking Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="happy-customers">0</div>
+                    <div class="text-gray-600">Pelanggan Puas</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="total-motors">0</div>
+                    <div class="text-gray-600">Motor Tersedia</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="years-experience">0</div>
+                    <div class="text-gray-600">Tahun Pengalaman</div>
+                </div>
+                <div class="fade-in">
+                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="total-bookings">0</div>
+                    <div class="text-gray-600">Total Booking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Layanan Kami</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan terbaik untuk memenuhi kebutuhan perjalanan Anda</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">🚚</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Antar Jemput</h3>
+                    <p class="text-gray-600 text-center mb-6">Layanan antar jemput motor ke lokasi Anda tanpa biaya tambahan dalam radius 10km</p>
+                    <div class="text-center">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">GRATIS</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">🛡️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Asuransi</h3>
+                    <p class="text-gray-600 text-center mb-6">Semua motor dilengkapi asuransi komprehensif untuk keamanan perjalanan Anda</p>
+                    <div class="text-center">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">TERMASUK</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">🔧</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Maintenance</h3>
+                    <p class="text-gray-600 text-center mb-6">Motor selalu dalam kondisi prima dengan perawatan rutin dan pengecekan berkala</p>
+                    <div class="text-center">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">TERJAMIN</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">📱</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Booking Online</h3>
+                    <p class="text-gray-600 text-center mb-6">Sistem booking online 24/7 dengan konfirmasi instan dan pembayaran fleksibel</p>
+                    <div class="text-center">
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">24/7</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">🎯</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">GPS Tracking</h3>
+                    <p class="text-gray-600 text-center mb-6">Fitur GPS tracking untuk keamanan dan memudahkan navigasi perjalanan Anda</p>
+                    <div class="text-center">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">CANGGIH</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="text-5xl mb-6 text-center">💬</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Customer Support</h3>
+                    <p class="text-gray-600 text-center mb-6">Tim customer support yang siap membantu Anda kapan saja selama perjalanan</p>
+                    <div class="text-center">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">RESPONSIF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motors Section -->
+    <section id="motors" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Armada Motor Premium</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih dari koleksi motor terlengkap dengan berbagai kategori sesuai kebutuhan perjalanan Anda</p>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="mb-12 bg-gray-50 p-6 rounded-2xl">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                    <div class="flex-1 max-w-md">
+                        <div class="relative">
+                            <input type="text" id="search-motor" placeholder="Cari motor..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterMotors('all')" class="filter-btn bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 transition duration-300 font-medium">
+                            <i class="fas fa-th-large mr-2"></i>Semua
+                        </button>
+                        <button onclick="filterMotors('matic')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                            <i class="fas fa-cog mr-2"></i>Matic
+                        </button>
+                        <button onclick="filterMotors('manual')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                            <i class="fas fa-wrench mr-2"></i>Manual
+                        </button>
+                        <button onclick="filterMotors('sport')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
+                            <i class="fas fa-tachometer-alt mr-2"></i>Sport
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motors Grid -->
+            <div id="motors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Motor cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Galeri Foto</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat koleksi foto motor dan momen perjalanan pelanggan kami</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor1')">
+                    <div class="text-6xl mb-4">🏍️</div>
+                    <p class="font-semibold">Honda CB150R</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor2')">
+                    <div class="text-6xl mb-4">🛵</div>
+                    <p class="font-semibold">Yamaha NMAX</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor3')">
+                    <div class="text-6xl mb-4">🏍️</div>
+                    <p class="font-semibold">Kawasaki Ninja</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor4')">
+                    <div class="text-6xl mb-4">🛵</div>
+                    <p class="font-semibold">Honda Vario</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer1')">
+                    <div class="text-6xl mb-4">📸</div>
+                    <p class="font-semibold">Trip Bali</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer2')">
+                    <div class="text-6xl mb-4">🌄</div>
+                    <p class="font-semibold">Adventure</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-teal-400 to-blue-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer3')">
+                    <div class="text-6xl mb-4">🏖️</div>
+                    <p class="font-semibold">Beach Trip</p>
+                </div>
+                <div class="gallery-item bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer4')">
+                    <div class="text-6xl mb-4">🌆</div>
+                    <p class="font-semibold">City Tour</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gradient-to-br from-indigo-600 to-purple-600 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Testimoni Pelanggan</h2>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto">Dengarkan pengalaman luar biasa dari pelanggan setia Widiasih Motor</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="opacity-90">"Pelayanan luar biasa! Motor selalu dalam kondisi prima dan tim customer service sangat responsif. Sudah 3 kali rental di sini dan selalu puas!"</p>
+                </div>
+
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-2xl">👩</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sari Dewi</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="opacity-90">"Booking online sangat mudah dan praktis. Layanan antar jemput gratis juga sangat membantu. Harga terjangkau dengan kualitas motor yang bagus!"</p>
+                </div>
+
+                <div class="testimonial-card p-8 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Ahmad Rizki</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="opacity-90">"Trip ke Bali jadi lebih seru dengan motor dari Widiasih Motor. GPS tracking sangat membantu dan asuransi memberikan rasa aman selama perjalanan."</p>
+                </div>
+            </div>
+
+            <!-- Add Review Button -->
+            <div class="text-center mt-12">
+                <button onclick="openReviewModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-star mr-2"></i>Tulis Review
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Form Booking</h2>
+                <p class="text-lg text-gray-600">Isi form di bawah untuk melakukan reservasi motor impian Anda</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+                <form id="booking-form" class="space-y-8">
+                    <!-- Personal Information -->
+                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-user mr-3 text-indigo-600"></i>Informasi Pribadi
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                                <input type="text" id="customer-name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
+                                <input type="tel" id="customer-phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="customer-email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nomor KTP</label>
+                            <input type="text" id="customer-ktp" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan 16 digit nomor KTP">
+                        </div>
+                    </div>
+
+                    <!-- Motor Selection -->
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-motorcycle mr-3 text-indigo-600"></i>Pilihan Motor
+                        </h3>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Pilih Motor</label>
+                            <select id="selected-motor" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                <option value="">-- Pilih Motor --</option>
+                            </select>
+                        </div>
+                        <div id="motor-details" class="mt-4 p-4 bg-white rounded-xl hidden">
+                            <!-- Motor details will be shown here -->
+                        </div>
+                    </div>
+
+                    <!-- Rental Period -->
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-calendar-alt mr-3 text-indigo-600"></i>Periode Rental
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Mulai</label>
+                                <input type="date" id="start-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Selesai</label>
+                                <input type="date" id="end-date" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                            </div>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengambilan</label>
+                                <select id="pickup-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                    <option value="">-- Pilih Jam --</option>
+                                    <option value="08:00">08:00 WIB</option>
+                                    <option value="09:00">09:00 WIB</option>
+                                    <option value="10:00">10:00 WIB</option>
+                                    <option value="11:00">11:00 WIB</option>
+                                    <option value="12:00">12:00 WIB</option>
+                                    <option value="13:00">13:00 WIB</option>
+                                    <option value="14:00">14:00 WIB</option>
+                                    <option value="15:00">15:00 WIB</option>
+                                    <option value="16:00">16:00 WIB</option>
+                                    <option value="17:00">17:00 WIB</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Jam Pengembalian</label>
+                                <select id="return-time" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+                                    <option value="">-- Pilih Jam --</option>
+                                    <option value="08:00">08:00 WIB</option>
+                                    <option value="09:00">09:00 WIB</option>
+                                    <option value="10:00">10:00 WIB</option>
+                                    <option value="11:00">11:00 WIB</option>
+                                    <option value="12:00">12:00 WIB</option>
+                                    <option value="13:00">13:00 WIB</option>
+                                    <option value="14:00">14:00 WIB</option>
+                                    <option value="15:00">15:00 WIB</option>
+                                    <option value="16:00">16:00 WIB</option>
+                                    <option value="17:00">17:00 WIB</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-indigo-600"></i>Lokasi
+                        </h3>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengambilan</label>
+                            <textarea id="pickup-address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengambilan motor"></textarea>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="same-return-address" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <span class="ml-2 text-sm text-gray-700">Alamat pengembalian sama dengan pengambilan</span>
+                            </label>
+                        </div>
+                        <div id="return-address-section" class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Alamat Pengembalian</label>
+                            <textarea id="return-address" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all" placeholder="Masukkan alamat lengkap untuk pengembalian motor"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Additional Services -->
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-plus-circle mr-3 text-indigo-600"></i>Layanan Tambahan
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="helmet-extra" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <span class="ml-3 text-sm text-gray-700">Helm Tambahan (+Rp 10.000/hari)</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="raincoat" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <span class="ml-3 text-sm text-gray-700">Jas Hujan (+Rp 15.000/hari)</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="phone-holder" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <span class="ml-3 text-sm text-gray-700">Phone Holder (+Rp 5.000/hari)</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="top-box" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <span class="ml-3 text-sm text-gray-700">Top Box (+Rp 20.000/hari)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Booking Summary -->
+                    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i class="fas fa-receipt mr-3 text-indigo-600"></i>Ringkasan Booking
+                        </h3>
+                        <div id="booking-summary" class="text-gray-600">
+                            <p>Pilih motor dan tanggal untuk melihat ringkasan</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-8 rounded-2xl text-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fas fa-check-circle mr-2"></i>Konfirmasi Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Hubungi Kami</h2>
+                <p class="text-lg opacity-90">Tim customer service kami siap membantu Anda 24/7</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4">📞</div>
+                    <h3 class="text-xl font-semibold mb-2">Telepon</h3>
+                    <p class="opacity-90">+62 812-3456-7890</p>
+                    <p class="opacity-90">+62 821-9876-5432</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4">📧</div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="opacity-90">info@widiasihmotor.com</p>
+                    <p class="opacity-90">booking@widiasihmotor.com</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4">📍</div>
+                    <h3 class="text-xl font-semibold mb-2">Alamat</h3>
+                    <p class="opacity-90">Jl. Raya Motor No. 123<br>Jakarta Selatan 12345</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4">⏰</div>
+                    <h3 class="text-xl font-semibold mb-2">Jam Operasional</h3>
+                    <p class="opacity-90">Senin - Minggu<br>08:00 - 22:00 WIB</p>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-6">Ikuti Kami</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all duration-300 transform hover:scale-110">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">🏍️ Widiasih Motor</div>
+                    <p class="text-gray-400 mb-4">Rental motor premium dengan layanan terbaik untuk perjalanan tak terlupakan Anda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Rental Harian</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Rental Mingguan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Rental Bulanan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Antar Jemput</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Motor</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Motor Matic</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Motor Manual</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Motor Sport</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Motor Premium</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Bantuan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Widiasih Motor. Semua hak dilindungi undang-undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Bot -->
+    <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle" class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 chat-bubble">
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Asisten Widiasih</h4>
+                            <p class="text-xs opacity-90">Online</p>
+                        </div>
+                    </div>
+                    <button id="chat-close" class="text-white hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="chat-messages" class="h-64 overflow-y-auto p-4 space-y-3">
+                <div class="flex items-start">
+                    <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                        <i class="fas fa-robot text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="bg-gray-100 rounded-2xl rounded-tl-sm p-3 max-w-xs">
+                        <p class="text-sm">Halo! Saya asisten virtual Widiasih Motor. Ada yang bisa saya bantu?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex space-x-2">
+                    <input type="text" id="chat-input" placeholder="Ketik pesan..." class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm">
+                    <button id="chat-send" class="bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <button onclick="sendQuickReply('Harga rental')" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition-colors">Harga rental</button>
+                    <button onclick="sendQuickReply('Motor tersedia')" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition-colors">Motor tersedia</button>
+                    <button onclick="sendQuickReply('Cara booking')" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition-colors">Cara booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Modal -->
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-full overflow-hidden">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-tachometer-alt mr-3"></i>Admin Dashboard
+                    </h3>
+                    <button onclick="closeAdminDashboard()" class="text-white hover:text-gray-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6 max-h-96 overflow-y-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-blue-100">Total Booking</p>
+                                <p class="text-3xl font-bold" id="admin-total-bookings">0</p>
+                            </div>
+                            <i class="fas fa-calendar-check text-4xl text-blue-200"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-green-100">Pendapatan</p>
+                                <p class="text-3xl font-bold" id="admin-total-revenue">Rp 0</p>
+                            </div>
+                            <i class="fas fa-money-bill-wave text-4xl text-green-200"></i>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-xl">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-purple-100">Motor Aktif</p>
+                                <p class="text-3xl font-bold" id="admin-active-motors">0</p>
+                            </div>
+                            <i class="fas fa-motorcycle text-4xl text-purple-200"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4">Daftar Booking Terbaru</h4>
+                    <div id="admin-bookings-list" class="space-y-4">
+                        <!-- Booking list will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white p-8 rounded-2xl max-w-md mx-4 text-center">
+            <div class="text-6xl mb-4">✅</div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Booking Berhasil!</h3>
+            <div id="booking-details" class="text-gray-600 mb-6"></div>
+            <button onclick="closeModal('success-modal')" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300">
+                Tutup
+            </button>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 text-center">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Galeri Foto</h3>
+                <button onclick="closeModal('gallery-modal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="gallery-content" class="text-center">
+                <!-- Gallery content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Tulis Review</h3>
+                <button onclick="closeModal('review-modal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="review-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Nama</label>
+                    <input type="text" id="review-name" required class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Rating</label>
+                    <div class="flex space-x-1" id="star-rating">
+                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="1">★</button>
+                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="2">★</button>
+                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="3">★</button>
+                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="4">★</button>
+                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="5">★</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Review</label>
+                    <textarea id="review-text" required rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Ceritakan pengalaman Anda..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300">
+                    Kirim Review
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Motor data with enhanced information
+        const motors = [
+            {
+                id: 1,
+                name: "Honda Vario 150",
+                type: "matic",
+                price: 75000,
+                image: "🛵",
+                description: "Motor matic yang nyaman untuk perjalanan dalam kota dengan teknologi terdepan",
+                features: ["Matic", "150cc", "Hemat BBM", "Bagasi Luas", "LED Headlight"],
+                specs: {
+                    engine: "150cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.8,
+                available: true
+            },
+            {
+                id: 2,
+                name: "Yamaha NMAX",
+                type: "matic",
+                price: 85000,
+                image: "🛵",
+                description: "Motor matic premium dengan performa tinggi dan desain sporty",
+                features: ["Matic", "155cc", "ABS", "Smart Key", "USB Charger"],
+                specs: {
+                    engine: "155cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.9,
+                available: true
+            },
+            {
+                id: 3,
+                name: "Honda CB150R",
+                type: "manual",
+                price: 80000,
+                image: "🏍️",
+                description: "Motor sport dengan handling yang responsif dan performa optimal",
+                features: ["Manual", "150cc", "Sport", "LED", "Digital Display"],
+                specs: {
+                    engine: "150cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Manual 6-Speed",
+                    seat: "2 Orang"
+                },
+                rating: 4.7,
+                available: true
+            },
+            {
+                id: 4,
+                name: "Kawasaki Ninja 250",
+                type: "sport",
+                price: 120000,
+                image: "🏍️",
+                description: "Motor sport untuk pengalaman berkendara yang menantang dan adrenalin tinggi",
+                features: ["Manual", "250cc", "Sport", "ABS", "Slipper Clutch"],
+                specs: {
+                    engine: "250cc, 4-Stroke Twin",
+                    fuel: "Bensin",
+                    transmission: "Manual 6-Speed",
+                    seat: "2 Orang"
+                },
+                rating: 4.9,
+                available: true
+            },
+            {
+                id: 5,
+                name: "Suzuki Satria FU",
+                type: "manual",
+                price: 70000,
+                image: "🏍️",
+                description: "Motor bebek sporty yang lincah dan ekonomis untuk perjalanan sehari-hari",
+                features: ["Manual", "150cc", "Sporty", "Ekonomis", "Ringan"],
+                specs: {
+                    engine: "150cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Manual 5-Speed",
+                    seat: "2 Orang"
+                },
+                rating: 4.5,
+                available: true
+            },
+            {
+                id: 6,
+                name: "Honda PCX 160",
+                type: "matic",
+                price: 90000,
+                image: "🛵",
+                description: "Motor matic premium dengan teknologi terdepan dan kenyamanan maksimal",
+                features: ["Matic", "160cc", "Keyless", "USB Charger", "Smart Key"],
+                specs: {
+                    engine: "160cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.8,
+                available: true
+            },
+            {
+                id: 7,
+                name: "Yamaha R15",
+                type: "sport",
+                price: 110000,
+                image: "🏍️",
+                description: "Motor sport dengan teknologi MotoGP dan performa racing yang memukau",
+                features: ["Manual", "155cc", "Sport", "VVA", "Slipper Clutch"],
+                specs: {
+                    engine: "155cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Manual 6-Speed",
+                    seat: "2 Orang"
+                },
+                rating: 4.8,
+                available: true
+            },
+            {
+                id: 8,
+                name: "Honda Beat",
+                type: "matic",
+                price: 65000,
+                image: "🛵",
+                description: "Motor matic compact yang ideal untuk mobilitas perkotaan yang praktis",
+                features: ["Matic", "110cc", "Compact", "Hemat BBM", "Ringan"],
+                specs: {
+                    engine: "110cc, 4-Stroke",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.6,
+                available: true
+            }
+        ];
+
+        let bookings = JSON.parse(localStorage.getItem('widiasihMotorBookings')) || [];
+        let reviews = JSON.parse(localStorage.getItem('widiasihMotorReviews')) || [];
+        let currentRating = 0;
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen after 2 seconds
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.display = 'none';
+            }, 2000);
+
+            renderMotors();
+            populateMotorSelect();
+            setupEventListeners();
+            setMinDate();
+            animateStats();
+            setupChatBot();
+            setupStarRating();
+        });
+
+        // Animate statistics
+        function animateStats() {
+            const stats = [
+                { id: 'happy-customers', target: 1250 },
+                { id: 'total-motors', target: motors.length },
+                { id: 'years-experience', target: 8 },
+                { id: 'total-bookings', target: bookings.length }
+            ];
+
+            stats.forEach(stat => {
+                animateNumber(stat.id, stat.target);
+            });
+        }
+
+        function animateNumber(elementId, target) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 50);
+        }
+
+        // Render motors with enhanced design
+        function renderMotors(filter = 'all', searchTerm = '') {
+            const motorsGrid = document.getElementById('motors-grid');
+            let filteredMotors = filter === 'all' ? motors : motors.filter(motor => motor.type === filter);
+            
+            if (searchTerm) {
+                filteredMotors = filteredMotors.filter(motor => 
+                    motor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    motor.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+            
+            motorsGrid.innerHTML = filteredMotors.map(motor => `
+                <div class="motor-card bg-white rounded-3xl shadow-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="text-center mb-6">
+                            <div class="text-8xl mb-4">${motor.image}</div>
+                            <div class="flex items-center justify-center mb-2">
+                                <div class="star-rating mr-2">
+                                    ${generateStars(motor.rating)}
+                                </div>
+                                <span class="text-sm text-gray-600">(${motor.rating})</span>
+                            </div>
+                            ${motor.available ? 
+                                '<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Tersedia</span>' :
+                                '<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">Tidak Tersedia</span>'
+                            }
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 text-center">${motor.name}</h3>
+                        <p class="text-gray-600 mb-6 text-center">${motor.description}</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-3">Fitur Utama:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${motor.features.map(feature => `
+                                    <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-medium">${feature}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6 bg-gray-50 p-4 rounded-2xl">
+                            <h4 class="font-semibold text-gray-900 mb-3">Spesifikasi:</h4>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div><span class="text-gray-600">Mesin:</span> ${motor.specs.engine}</div>
+                                <div><span class="text-gray-600">Transmisi:</span> ${motor.specs.transmission}</div>
+                                <div><span class="text-gray-600">Bahan Bakar:</span> ${motor.specs.fuel}</div>
+                                <div><span class="text-gray-600">Kapasitas:</span> ${motor.specs.seat}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <span class="text-3xl font-bold text-indigo-600">Rp ${motor.price.toLocaleString('id-ID')}</span>
+                                <span class="text-gray-500">/hari</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-3">
+                            <button onclick="selectMotor(${motor.id})" class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 font-semibold">
+                                <i class="fas fa-calendar-check mr-2"></i>Booking
+                            </button>
+                            <button onclick="showMotorDetails(${motor.id})" class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl hover:bg-gray-200 transition duration-300">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Generate star rating HTML
+        function generateStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 !== 0;
+            let starsHTML = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                starsHTML += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                starsHTML += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                starsHTML += '<i class="far fa-star"></i>';
+            }
+            
+            return starsHTML;
+        }
+
+        // Filter motors
+        function filterMotors(type) {
+            // Update filter button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-indigo-600', 'text-white');
+            
+            const searchTerm = document.getElementById('search-motor').value;
+            renderMotors(type, searchTerm);
+        }
+
+        // Search motors
+        function searchMotors() {
+            const searchTerm = document.getElementById('search-motor').value;
+            const activeFilter = document.querySelector('.filter-btn.bg-indigo-600').textContent.trim().toLowerCase();
+            const filterType = activeFilter === 'semua' ? 'all' : activeFilter;
+            renderMotors(filterType, searchTerm);
+        }
+
+        // Select motor and scroll to booking
+        function selectMotor(motorId) {
+            const motor = motors.find(m => m.id === motorId);
+            const selectElement = document.getElementById('selected-motor');
+            selectElement.value = motorId;
+            updateBookingSummary();
+            showMotorDetails(motorId);
+            scrollToSection('booking');
+        }
+
+        // Show motor details in booking form
+        function showMotorDetails(motorId) {
+            const motor = motors.find(m => m.id === motorId);
+            const detailsDiv = document.getElementById('motor-details');
+            
+            detailsDiv.innerHTML = `
+                <div class="flex items-center mb-4">
+                    <div class="text-4xl mr-4">${motor.image}</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900">${motor.name}</h4>
+                        <div class="star-rating">
+                            ${generateStars(motor.rating)}
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div><span class="font-medium">Harga:</span> Rp ${motor.price.toLocaleString('id-ID')}/hari</div>
+                    <div><span class="font-medium">Mesin:</span> ${motor.specs.engine}</div>
+                    <div><span class="font-medium">Transmisi:</span> ${motor.specs.transmission}</div>
+                    <div><span class="font-medium">Kapasitas:</span> ${motor.specs.seat}</div>
+                </div>
+            `;
+            detailsDiv.classList.remove('hidden');
+        }
+
+        // Populate motor select options
+        function populateMotorSelect() {
+            const selectElement = document.getElementById('selected-motor');
+            selectElement.innerHTML = '<option value="">-- Pilih Motor --</option>' +
+                motors.map(motor => `<option value="${motor.id}">${motor.name} - Rp ${motor.price.toLocaleString('id-ID')}/hari</option>`).join('');
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    scrollToSection(targetId);
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+
+            // Search functionality
+            document.getElementById('search-motor').addEventListener('input', searchMotors);
+
+            // Booking form inputs
+            document.getElementById('selected-motor').addEventListener('change', function() {
+                updateBookingSummary();
+                if (this.value) {
+                    showMotorDetails(parseInt(this.value));
+                }
+            });
+            document.getElementById('start-date').addEventListener('change', updateBookingSummary);
+            document.getElementById('end-date').addEventListener('change', updateBookingSummary);
+            document.getElementById('pickup-time').addEventListener('change', updateBookingSummary);
+            document.getElementById('return-time').addEventListener('change', updateBookingSummary);
+
+            // Additional services checkboxes
+            ['helmet-extra', 'raincoat', 'phone-holder', 'top-box'].forEach(id => {
+                document.getElementById(id).addEventListener('change', updateBookingSummary);
+            });
+
+            // Same return address checkbox
+            document.getElementById('same-return-address').addEventListener('change', function() {
+                const returnAddressSection = document.getElementById('return-address-section');
+                const returnAddressInput = document.getElementById('return-address');
+                
+                if (this.checked) {
+                    returnAddressSection.style.display = 'none';
+                    returnAddressInput.required = false;
+                } else {
+                    returnAddressSection.style.display = 'block';
+                    returnAddressInput.required = true;
+                }
+            });
+
+            // Form submission
+            document.getElementById('booking-form').addEventListener('submit', handleBookingSubmit);
+            document.getElementById('review-form').addEventListener('submit', handleReviewSubmit);
+        }
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Set minimum date to today
+        function setMinDate() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('start-date').min = today;
+            document.getElementById('end-date').min = today;
+        }
+
+        // Update booking summary with enhanced calculation
+        function updateBookingSummary() {
+            const motorId = document.getElementById('selected-motor').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            const summaryDiv = document.getElementById('booking-summary');
+
+            if (!motorId || !startDate || !endDate) {
+                summaryDiv.innerHTML = '<p>Pilih motor dan tanggal untuk melihat ringkasan</p>';
+                return;
+            }
+
+            const motor = motors.find(m => m.id == motorId);
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+            if (days <= 0) {
+                summaryDiv.innerHTML = '<p class="text-red-600">Tanggal selesai harus setelah tanggal mulai</p>';
+                return;
+            }
+
+            let totalPrice = motor.price * days;
+            let additionalServices = [];
+
+            // Calculate additional services
+            if (document.getElementById('helmet-extra').checked) {
+                additionalServices.push({ name: 'Helm Tambahan', price: 10000 * days });
+                totalPrice += 10000 * days;
+            }
+            if (document.getElementById('raincoat').checked) {
+                additionalServices.push({ name: 'Jas Hujan', price: 15000 * days });
+                totalPrice += 15000 * days;
+            }
+            if (document.getElementById('phone-holder').checked) {
+                additionalServices.push({ name: 'Phone Holder', price: 5000 * days });
+                totalPrice += 5000 * days;
+            }
+            if (document.getElementById('top-box').checked) {
+                additionalServices.push({ name: 'Top Box', price: 20000 * days });
+                totalPrice += 20000 * days;
+            }
+
+            let summaryHTML = `
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span><strong>Motor:</strong></span>
+                        <span>${motor.name}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span><strong>Durasi:</strong></span>
+                        <span>${days} hari</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span><strong>Harga Motor:</strong></span>
+                        <span>Rp ${(motor.price * days).toLocaleString('id-ID')}</span>
+                    </div>
+            `;
+
+            if (additionalServices.length > 0) {
+                summaryHTML += '<div class="border-t pt-2 mt-2"><strong>Layanan Tambahan:</strong></div>';
+                additionalServices.forEach(service => {
+                    summaryHTML += `
+                        <div class="flex justify-between text-sm">
+                            <span>${service.name}:</span>
+                            <span>Rp ${service.price.toLocaleString('id-ID')}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            summaryHTML += `
+                    <div class="border-t pt-2 mt-2">
+                        <div class="flex justify-between">
+                            <span class="text-lg font-bold text-indigo-600"><strong>Total Harga:</strong></span>
+                            <span class="text-lg font-bold text-indigo-600">Rp ${totalPrice.toLocaleString('id-ID')}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            summaryDiv.innerHTML = summaryHTML;
+        }
+
+        // Handle booking form submission
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+
+            const formData = {
+                id: Date.now(),
+                customerName: document.getElementById('customer-name').value,
+                customerPhone: document.getElementById('customer-phone').value,
+                customerEmail: document.getElementById('customer-email').value,
+                customerKtp: document.getElementById('customer-ktp').value,
+                motorId: document.getElementById('selected-motor').value,
+                startDate: document.getElementById('start-date').value,
+                endDate: document.getElementById('end-date').value,
+                pickupTime: document.getElementById('pickup-time').value,
+                returnTime: document.getElementById('return-time').value,
+                pickupAddress: document.getElementById('pickup-address').value,
+                returnAddress: document.getElementById('same-return-address').checked ? 
+                    document.getElementById('pickup-address').value : 
+                    document.getElementById('return-address').value,
+                additionalServices: {
+                    helmetExtra: document.getElementById('helmet-extra').checked,
+                    raincoat: document.getElementById('raincoat').checked,
+                    phoneHolder: document.getElementById('phone-holder').checked,
+                    topBox: document.getElementById('top-box').checked
+                },
+                bookingDate: new Date().toISOString(),
+                status: 'pending'
+            };
+
+            // Validate dates
+            const start = new Date(formData.startDate);
+            const end = new Date(formData.endDate);
+            const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+
+            if (days <= 0) {
+                alert('Tanggal selesai harus setelah tanggal mulai');
+                return;
+            }
+
+            // Check availability
+            const isAvailable = checkMotorAvailability(formData.motorId, formData.startDate, formData.endDate);
+            if (!isAvailable) {
+                alert('Motor tidak tersedia pada tanggal yang dipilih. Silakan pilih tanggal lain.');
+                return;
+            }
+
+            // Save booking
+            bookings.push(formData);
+            localStorage.setItem('widiasihMotorBookings', JSON.stringify(bookings));
+
+            // Show success modal
+            showSuccessModal(formData);
+
+            // Reset form
+            document.getElementById('booking-form').reset();
+            document.getElementById('booking-summary').innerHTML = '<p>Pilih motor dan tanggal untuk melihat ringkasan</p>';
+            document.getElementById('motor-details').classList.add('hidden');
+        }
+
+        // Check motor availability
+        function checkMotorAvailability(motorId, startDate, endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            return !bookings.some(booking => {
+                if (booking.motorId != motorId) return false;
+                
+                const bookingStart = new Date(booking.startDate);
+                const bookingEnd = new Date(booking.endDate);
+                
+                return (start <= bookingEnd && end >= bookingStart);
+            });
+        }
+
+        // Show success modal
+        function showSuccessModal(bookingData) {
+            const motor = motors.find(m => m.id == bookingData.motorId);
+            const start = new Date(bookingData.startDate);
+            const end = new Date(bookingData.endDate);
+            const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+            
+            let totalPrice = motor.price * days;
+            let additionalServices = [];
+
+            // Calculate additional services for display
+            if (bookingData.additionalServices.helmetExtra) {
+                additionalServices.push('Helm Tambahan');
+                totalPrice += 10000 * days;
+            }
+            if (bookingData.additionalServices.raincoat) {
+                additionalServices.push('Jas Hujan');
+                totalPrice += 15000 * days;
+            }
+            if (bookingData.additionalServices.phoneHolder) {
+                additionalServices.push('Phone Holder');
+                totalPrice += 5000 * days;
+            }
+            if (bookingData.additionalServices.topBox) {
+                additionalServices.push('Top Box');
+                totalPrice += 20000 * days;
+            }
+
+            document.getElementById('booking-details').innerHTML = `
+                <div class="text-left space-y-2">
+                    <p><strong>ID Booking:</strong> #${bookingData.id}</p>
+                    <p><strong>Nama:</strong> ${bookingData.customerName}</p>
+                    <p><strong>Motor:</strong> ${motor.name}</p>
+                    <p><strong>Tanggal:</strong> ${formatDate(bookingData.startDate)} - ${formatDate(bookingData.endDate)}</p>
+                    <p><strong>Waktu:</strong> ${bookingData.pickupTime} - ${bookingData.returnTime} WIB</p>
+                    <p><strong>Durasi:</strong> ${days} hari</p>
+                    ${additionalServices.length > 0 ? `<p><strong>Layanan Tambahan:</strong> ${additionalServices.join(', ')}</p>` : ''}
+                    <p><strong>Total:</strong> Rp ${totalPrice.toLocaleString('id-ID')}</p>
+                    <p class="text-sm text-gray-500 mt-4">Tim kami akan menghubungi Anda dalam 15 menit untuk konfirmasi booking.</p>
+                </div>
+            `;
+
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('success-modal').classList.add('flex');
+        }
+
+        // Setup chat bot
+        function setupChatBot() {
+            const chatToggle = document.getElementById('chat-toggle');
+            const chatWindow = document.getElementById('chat-window');
+            const chatClose = document.getElementById('chat-close');
+            const chatInput = document.getElementById('chat-input');
+            const chatSend = document.getElementById('chat-send');
+            const chatMessages = document.getElementById('chat-messages');
+
+            chatToggle.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+            });
+
+            chatClose.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addChatMessage(message, 'user');
+                chatInput.value = '';
+
+                // Generate bot response
+                setTimeout(() => {
+                    const response = generateBotResponse(message);
+                    addChatMessage(response, 'bot');
+                }, 1000);
+            }
+
+            function addChatMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'flex items-start';
+
+                if (sender === 'user') {
+                    messageDiv.innerHTML = `
+                        <div class="flex items-start justify-end w-full">
+                            <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-sm p-3 max-w-xs">
+                                <p class="text-sm">${message}</p>
+                            </div>
+                            <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center ml-2 flex-shrink-0">
+                                <i class="fas fa-user text-white text-sm"></i>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    messageDiv.innerHTML = `
+                        <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                            <i class="fas fa-robot text-indigo-600 text-sm"></i>
+                        </div>
+                        <div class="bg-gray-100 rounded-2xl rounded-tl-sm p-3 max-w-xs">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    `;
+                }
+
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function generateBotResponse(message) {
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('harga') || lowerMessage.includes('tarif')) {
+                    return 'Harga rental motor kami mulai dari Rp 65.000/hari untuk Honda Beat hingga Rp 120.000/hari untuk Kawasaki Ninja 250. Harga sudah termasuk asuransi dan layanan antar jemput gratis!';
+                } else if (lowerMessage.includes('motor') && lowerMessage.includes('tersedia')) {
+                    return `Saat ini kami memiliki ${motors.length} motor tersedia: Honda Vario, Yamaha NMAX, Honda CB150R, Kawasaki Ninja 250, dan lainnya. Semua motor dalam kondisi prima dan siap pakai!`;
+                } else if (lowerMessage.includes('booking') || lowerMessage.includes('pesan')) {
+                    return 'Untuk booking motor, Anda bisa mengisi form booking di website ini atau hubungi kami di +62 812-3456-7890. Proses booking sangat mudah dan cepat!';
+                } else if (lowerMessage.includes('syarat') || lowerMessage.includes('dokumen')) {
+                    return 'Syarat rental: KTP asli, SIM C yang masih berlaku, dan deposit sesuai jenis motor. Untuk motor sport diperlukan SIM A. Semua dokumen akan dikembalikan setelah rental selesai.';
+                } else if (lowerMessage.includes('jam') || lowerMessage.includes('buka')) {
+                    return 'Kami buka setiap hari dari jam 08:00 - 22:00 WIB. Layanan antar jemput tersedia 24 jam dengan pemberitahuan minimal 2 jam sebelumnya.';
+                } else if (lowerMessage.includes('lokasi') || lowerMessage.includes('alamat')) {
+                    return 'Kantor kami di Jl. Raya Motor No. 123, Jakarta Selatan. Kami juga menyediakan layanan antar jemput gratis dalam radius 10km dari kantor.';
+                } else {
+                    return 'Terima kasih atas pertanyaannya! Untuk informasi lebih detail, silakan hubungi customer service kami di +62 812-3456-7890 atau email ke info@widiasihmotor.com. Kami siap membantu Anda 24/7!';
+                }
+            }
+        }
+
+        // Send quick reply
+        function sendQuickReply(message) {
+            const chatInput = document.getElementById('chat-input');
+            chatInput.value = message;
+            document.getElementById('chat-send').click();
+        }
+
+        // Setup star rating
+        function setupStarRating() {
+            const stars = document.querySelectorAll('#star-rating .star');
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    currentRating = parseInt(this.dataset.rating);
+                    updateStarDisplay();
+                });
+                
+                star.addEventListener('mouseover', function() {
+                    const rating = parseInt(this.dataset.rating);
+                    highlightStars(rating);
+                });
+            });
+            
+            document.getElementById('star-rating').addEventListener('mouseleave', function() {
+                updateStarDisplay();
+            });
+        }
+
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('#star-rating .star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('text-yellow-400');
+                    star.classList.remove('text-gray-300');
+                } else {
+                    star.classList.add('text-gray-300');
+                    star.classList.remove('text-yellow-400');
+                }
+            });
+        }
+
+        function updateStarDisplay() {
+            highlightStars(currentRating);
+        }
+
+        // Handle review submission
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            
+            const reviewData = {
+                id: Date.now(),
+                name: document.getElementById('review-name').value,
+                rating: currentRating,
+                text: document.getElementById('review-text').value,
+                date: new Date().toISOString()
+            };
+            
+            if (currentRating === 0) {
+                alert('Silakan berikan rating terlebih dahulu');
+                return;
+            }
+            
+            reviews.push(reviewData);
+            localStorage.setItem('widiasihMotorReviews', JSON.stringify(reviews));
+            
+            alert('Terima kasih atas review Anda!');
+            closeModal('review-modal');
+            document.getElementById('review-form').reset();
+            currentRating = 0;
+            updateStarDisplay();
+        }
+
+        // Admin Dashboard Functions
+        function toggleAdminDashboard() {
+            updateAdminStats();
+            document.getElementById('admin-modal').classList.remove('hidden');
+            document.getElementById('admin-modal').classList.add('flex');
+        }
+
+        function closeAdminDashboard() {
+            document.getElementById('admin-modal').classList.add('hidden');
+            document.getElementById('admin-modal').classList.remove('flex');
+        }
+
+        function updateAdminStats() {
+            const totalBookings = bookings.length;
+            const totalRevenue = bookings.reduce((sum, booking) => {
+                const motor = motors.find(m => m.id == booking.motorId);
+                const days = Math.ceil((new Date(booking.endDate) - new Date(booking.startDate)) / (1000 * 60 * 60 * 24));
+                return sum + (motor ? motor.price * days : 0);
+            }, 0);
+            const activeMotors = motors.filter(m => m.available).length;
+
+            document.getElementById('admin-total-bookings').textContent = totalBookings;
+            document.getElementById('admin-total-revenue').textContent = `Rp ${totalRevenue.toLocaleString('id-ID')}`;
+            document.getElementById('admin-active-motors').textContent = activeMotors;
+
+            // Update bookings list
+            const bookingsList = document.getElementById('admin-bookings-list');
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = '<p class="text-gray-500 text-center">Belum ada booking</p>';
+            } else {
+                bookingsList.innerHTML = bookings.slice(-5).reverse().map(booking => {
+                    const motor = motors.find(m => m.id == booking.motorId);
+                    return `
+                        <div class="bg-white p-4 rounded-xl border border-gray-200">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h5 class="font-semibold text-gray-900">${booking.customerName}</h5>
+                                    <p class="text-sm text-gray-600">${motor ? motor.name : 'Motor tidak ditemukan'}</p>
+                                    <p class="text-xs text-gray-500">${formatDate(booking.startDate)} - ${formatDate(booking.endDate)}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-${booking.status === 'pending' ? 'yellow' : 'green'}-100 text-${booking.status === 'pending' ? 'yellow' : 'green'}-800 px-2 py-1 rounded-full text-xs font-medium">
+                                        ${booking.status === 'pending' ? 'Pending' : 'Confirmed'}
+                                    </span>
+                                    <p class="text-sm font-semibold text-gray-900 mt-1">ID: #${booking.id}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Gallery functions
+        function openGalleryModal(imageId) {
+            const galleryContent = document.getElementById('gallery-content');
+            const galleries = {
+                motor1: { title: 'Honda CB150R', content: '🏍️', description: 'Motor sport dengan performa tinggi dan desain agresif' },
+                motor2: { title: 'Yamaha NMAX', content: '🛵', description: 'Motor matic premium dengan teknologi terdepan' },
+                motor3: { title: 'Kawasaki Ninja', content: '🏍️', description: 'Motor sport untuk pengalaman berkendara yang menantang' },
+                motor4: { title: 'Honda Vario', content: '🛵', description: 'Motor matic yang nyaman untuk perjalanan sehari-hari' },
+                customer1: { title: 'Trip ke Bali', content: '🏖️', description: 'Pelanggan menikmati perjalanan indah di Bali' },
+                customer2: { title: 'Adventure', content: '🌄', description: 'Petualangan seru di pegunungan' },
+                customer3: { title: 'Beach Trip', content: '🏖️', description: 'Perjalanan santai ke pantai' },
+                customer4: { title: 'City Tour', content: '🌆', description: 'Jelajahi kota dengan motor kami' }
+            };
+            
+            const gallery = galleries[imageId];
+            galleryContent.innerHTML = `
+                <div class="text-8xl mb-6">${gallery.content}</div>
+                <h4 class="text-2xl font-bold text-gray-900 mb-4">${gallery.title}</h4>
+                <p class="text-gray-600">${gallery.description}</p>
+            `;
+            
+            document.getElementById('gallery-modal').classList.remove('hidden');
+            document.getElementById('gallery-modal').classList.add('flex');
+        }
+
+        // Modal functions
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.getElementById(modalId).classList.remove('flex');
+        }
+
+        function openReviewModal() {
+            document.getElementById('review-modal').classList.remove('hidden');
+            document.getElementById('review-modal').classList.add('flex');
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Close modals when clicking outside
+        ['success-modal', 'gallery-modal', 'review-modal', 'admin-modal'].forEach(modalId => {
+            document.getElementById(modalId).addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal(modalId);
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b4f71230f319d2',t:'MTc1OTkxOTQ1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
