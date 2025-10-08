@@ -25,8 +25,15 @@
         }
         
         .motor-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        @media (min-width: 768px) {
+            .motor-card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
         }
         
         .gradient-text {
@@ -71,6 +78,12 @@
             background-size: cover;
         }
         
+        @media (max-width: 768px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+        
         .glass-effect {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -86,13 +99,68 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
         }
+        
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .mobile-text-sm { font-size: 0.875rem; }
+            .mobile-text-base { font-size: 1rem; }
+            .mobile-text-lg { font-size: 1.125rem; }
+            .mobile-text-xl { font-size: 1.25rem; }
+            .mobile-text-2xl { font-size: 1.5rem; }
+            .mobile-text-3xl { font-size: 1.875rem; }
+            .mobile-text-4xl { font-size: 2.25rem; }
+            
+            .mobile-p-2 { padding: 0.5rem; }
+            .mobile-p-3 { padding: 0.75rem; }
+            .mobile-p-4 { padding: 1rem; }
+            .mobile-p-6 { padding: 1.5rem; }
+            
+            .mobile-m-2 { margin: 0.5rem; }
+            .mobile-m-4 { margin: 1rem; }
+            
+            .mobile-gap-2 { gap: 0.5rem; }
+            .mobile-gap-4 { gap: 1rem; }
+            
+            .mobile-rounded-lg { border-radius: 0.5rem; }
+            .mobile-rounded-xl { border-radius: 0.75rem; }
+            
+            .mobile-shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+        }
+        
+        /* Touch-friendly buttons */
+        @media (max-width: 768px) {
+            .touch-button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* Improved mobile chat */
+        @media (max-width: 640px) {
+            #chat-window {
+                width: calc(100vw - 2rem);
+                right: 1rem;
+                bottom: 5rem;
+            }
+        }
+        
+        /* Mobile modal improvements */
+        @media (max-width: 640px) {
+            .mobile-modal {
+                margin: 1rem;
+                max-height: calc(100vh - 2rem);
+                overflow-y: auto;
+            }
+        }
     </style>
 </head>
 <body class="h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50 font-sans">
     <!-- Loading Screen -->
     <div id="loading-screen" class="fixed inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center z-50">
         <div class="text-center text-white">
-            <div class="text-6xl mb-4 floating">🏍️</div>
+            <div class="text-6xl mb-4 floating">
+                <i class="fas fa-motorcycle"></i>
+            </div>
             <h1 class="text-3xl font-bold mb-4">Widiasih Motor</h1>
             <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
         </div>
@@ -100,10 +168,12 @@
 
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-40 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 sm:h-16">
                 <div class="flex items-center">
-                    <div class="text-2xl font-bold gradient-text">🏍️ Widiasih Motor</div>
+                    <div class="text-lg sm:text-2xl font-bold gradient-text">
+                        <i class="fas fa-motorcycle mr-2"></i><span class="hidden xs:inline">Widiasih Motor</span><span class="xs:hidden">WM</span>
+                    </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -120,7 +190,7 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 touch-button p-2">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -129,37 +199,42 @@
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/90 backdrop-blur-md border-t">
-                <a href="#home" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Beranda</a>
-                <a href="#motors" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Motor</a>
-                <a href="#services" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Layanan</a>
-                <a href="#gallery" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Galeri</a>
-                <a href="#testimonials" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Testimoni</a>
-                <a href="#booking" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Booking</a>
-                <a href="#contact" class="nav-link block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t">
+                <a href="#home" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Beranda</a>
+                <a href="#motors" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Motor</a>
+                <a href="#services" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Layanan</a>
+                <a href="#gallery" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Galeri</a>
+                <a href="#testimonials" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Testimoni</a>
+                <a href="#booking" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Booking</a>
+                <a href="#contact" class="nav-link block text-gray-700 hover:text-indigo-600 px-4 py-3 rounded-md text-base font-medium touch-button">Kontak</a>
+                <button onclick="toggleAdminDashboard()" class="w-full text-left bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-md text-base font-medium hover:from-indigo-700 hover:to-purple-700 transition-all touch-button">
+                    <i class="fas fa-cog mr-2"></i>Admin Dashboard
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white py-20 overflow-hidden">
+    <section id="home" class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white py-12 sm:py-20 overflow-hidden min-h-screen flex items-center">
         <div class="absolute inset-0 bg-black opacity-20"></div>
         <div class="absolute inset-0">
-            <div class="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full floating"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-white opacity-10 rounded-full floating" style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white opacity-10 rounded-full floating" style="animation-delay: 2s;"></div>
+            <div class="absolute top-10 left-4 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-white opacity-10 rounded-full floating"></div>
+            <div class="absolute top-32 sm:top-40 right-4 sm:right-20 w-10 h-10 sm:w-16 sm:h-16 bg-white opacity-10 rounded-full floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-8 h-8 sm:w-12 sm:h-12 bg-white opacity-10 rounded-full floating" style="animation-delay: 2s;"></div>
         </div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="text-center">
-                <div class="text-8xl mb-6 floating">🏍️</div>
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in">Widiasih Motor</h1>
-                <p class="text-xl md:text-3xl mb-8 fade-in">Rental Motor Premium dengan Layanan Terbaik</p>
-                <p class="text-lg md:text-xl mb-12 opacity-90 fade-in">Nikmati perjalanan tak terlupakan dengan armada motor terlengkap dan berkualitas tinggi</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-                    <button onclick="scrollToSection('motors')" class="bg-white text-indigo-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                <div class="text-6xl sm:text-8xl mb-4 sm:mb-6 floating">
+                    <i class="fas fa-motorcycle"></i>
+                </div>
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 fade-in leading-tight">Widiasih Motor</h1>
+                <p class="text-lg sm:text-xl md:text-3xl mb-6 sm:mb-8 fade-in px-4">Rental Motor Premium dengan Layanan Terbaik</p>
+                <p class="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 opacity-90 fade-in max-w-3xl mx-auto px-4">Nikmati perjalanan tak terlupakan dengan armada motor terlengkap dan berkualitas tinggi</p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center fade-in px-4">
+                    <button onclick="scrollToSection('motors')" class="bg-white text-indigo-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105 touch-button">
                         <i class="fas fa-motorcycle mr-2"></i>Lihat Motor Tersedia
                     </button>
-                    <button onclick="scrollToSection('booking')" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300 transform hover:scale-105">
+                    <button onclick="scrollToSection('booking')" class="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300 transform hover:scale-105 touch-button">
                         <i class="fas fa-calendar-check mr-2"></i>Booking Sekarang
                     </button>
                 </div>
@@ -168,89 +243,101 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-white">
+    <section class="py-12 sm:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="fade-in">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="happy-customers">0</div>
-                    <div class="text-gray-600">Pelanggan Puas</div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
+                <div class="fade-in bg-gradient-to-br from-indigo-50 to-purple-50 p-4 sm:p-6 rounded-2xl">
+                    <div class="text-2xl sm:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2" id="happy-customers">0</div>
+                    <div class="text-xs sm:text-base text-gray-600">Pelanggan Puas</div>
                 </div>
-                <div class="fade-in">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="total-motors">0</div>
-                    <div class="text-gray-600">Motor Tersedia</div>
+                <div class="fade-in bg-gradient-to-br from-blue-50 to-indigo-50 p-4 sm:p-6 rounded-2xl">
+                    <div class="text-2xl sm:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2" id="total-motors">0</div>
+                    <div class="text-xs sm:text-base text-gray-600">Motor Tersedia</div>
                 </div>
-                <div class="fade-in">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="years-experience">0</div>
-                    <div class="text-gray-600">Tahun Pengalaman</div>
+                <div class="fade-in bg-gradient-to-br from-purple-50 to-pink-50 p-4 sm:p-6 rounded-2xl">
+                    <div class="text-2xl sm:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2" id="years-experience">0</div>
+                    <div class="text-xs sm:text-base text-gray-600">Tahun Pengalaman</div>
                 </div>
-                <div class="fade-in">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2" id="total-bookings">0</div>
-                    <div class="text-gray-600">Total Booking</div>
+                <div class="fade-in bg-gradient-to-br from-green-50 to-blue-50 p-4 sm:p-6 rounded-2xl">
+                    <div class="text-2xl sm:text-4xl font-bold text-indigo-600 mb-1 sm:mb-2" id="total-bookings">0</div>
+                    <div class="text-xs sm:text-base text-gray-600">Total Booking</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+    <section id="services" class="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Layanan Kami</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan terbaik untuk memenuhi kebutuhan perjalanan Anda</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Layanan Kami</h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Kami menyediakan berbagai layanan terbaik untuk memenuhi kebutuhan perjalanan Anda</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">🚚</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Antar Jemput</h3>
-                    <p class="text-gray-600 text-center mb-6">Layanan antar jemput motor ke lokasi Anda tanpa biaya tambahan dalam radius 10km</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-truck-pickup"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Antar Jemput</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Layanan antar jemput motor ke lokasi Anda tanpa biaya tambahan dalam radius 10km</p>
                     <div class="text-center">
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">GRATIS</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">GRATIS</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">🛡️</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Asuransi</h3>
-                    <p class="text-gray-600 text-center mb-6">Semua motor dilengkapi asuransi komprehensif untuk keamanan perjalanan Anda</p>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Asuransi</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Semua motor dilengkapi asuransi komprehensif untuk keamanan perjalanan Anda</p>
                     <div class="text-center">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">TERMASUK</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">TERMASUK</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">🔧</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Maintenance</h3>
-                    <p class="text-gray-600 text-center mb-6">Motor selalu dalam kondisi prima dengan perawatan rutin dan pengecekan berkala</p>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Maintenance</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Motor selalu dalam kondisi prima dengan perawatan rutin dan pengecekan berkala</p>
                     <div class="text-center">
-                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">TERJAMIN</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">TERJAMIN</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">📱</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Booking Online</h3>
-                    <p class="text-gray-600 text-center mb-6">Sistem booking online 24/7 dengan konfirmasi instan dan pembayaran fleksibel</p>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Booking Online</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Sistem booking online 24/7 dengan konfirmasi instan dan pembayaran fleksibel</p>
                     <div class="text-center">
-                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">24/7</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">24/7</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">🎯</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">GPS Tracking</h3>
-                    <p class="text-gray-600 text-center mb-6">Fitur GPS tracking untuk keamanan dan memudahkan navigasi perjalanan Anda</p>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">GPS Tracking</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Fitur GPS tracking untuk keamanan dan memudahkan navigasi perjalanan Anda</p>
                     <div class="text-center">
-                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">CANGGIH</span>
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">CANGGIH</span>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="text-5xl mb-6 text-center">💬</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">Customer Support</h3>
-                    <p class="text-gray-600 text-center mb-6">Tim customer support yang siap membantu Anda kapan saja selama perjalanan</p>
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2">
+                    <div class="text-4xl sm:text-5xl mb-4 sm:mb-6 text-center text-indigo-500">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 text-center">Customer Support</h3>
+                    <p class="text-sm sm:text-base text-gray-600 text-center mb-4 sm:mb-6">Tim customer support yang siap membantu Anda kapan saja selama perjalanan</p>
                     <div class="text-center">
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">RESPONSIF</span>
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs sm:text-sm font-medium">RESPONSIF</span>
                     </div>
                 </div>
             </div>
@@ -258,41 +345,41 @@
     </section>
 
     <!-- Motors Section -->
-    <section id="motors" class="py-16 bg-white">
+    <section id="motors" class="py-12 sm:py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Armada Motor Premium</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih dari koleksi motor terlengkap dengan berbagai kategori sesuai kebutuhan perjalanan Anda</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Armada Motor Premium</h2>
+                <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">Pilih dari koleksi motor terlengkap dengan berbagai kategori sesuai kebutuhan perjalanan Anda</p>
             </div>
 
             <!-- Search and Filter -->
-            <div class="mb-12 bg-gray-50 p-6 rounded-2xl">
-                <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                    <div class="flex-1 max-w-md">
+            <div class="mb-8 sm:mb-12 bg-gray-50 p-4 sm:p-6 rounded-2xl">
+                <div class="flex flex-col gap-4">
+                    <div class="w-full">
                         <div class="relative">
-                            <input type="text" id="search-motor" placeholder="Cari motor..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            <input type="text" id="search-motor" placeholder="Cari motor..." class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm sm:text-base">
                             <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
                         </div>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="filterMotors('all')" class="filter-btn bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700 transition duration-300 font-medium">
-                            <i class="fas fa-th-large mr-2"></i>Semua
+                    <div class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
+                        <button onclick="filterMotors('all')" class="filter-btn bg-indigo-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-indigo-700 transition duration-300 font-medium text-sm sm:text-base touch-button">
+                            <i class="fas fa-th-large mr-1 sm:mr-2"></i><span class="hidden xs:inline">Semua</span><span class="xs:hidden">All</span>
                         </button>
-                        <button onclick="filterMotors('matic')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
-                            <i class="fas fa-cog mr-2"></i>Matic
+                        <button onclick="filterMotors('matic')" class="filter-btn bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium text-sm sm:text-base touch-button">
+                            <i class="fas fa-cog mr-1 sm:mr-2"></i>Matic
                         </button>
-                        <button onclick="filterMotors('manual')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
-                            <i class="fas fa-wrench mr-2"></i>Manual
+                        <button onclick="filterMotors('manual')" class="filter-btn bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium text-sm sm:text-base touch-button">
+                            <i class="fas fa-wrench mr-1 sm:mr-2"></i>Manual
                         </button>
-                        <button onclick="filterMotors('sport')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium">
-                            <i class="fas fa-tachometer-alt mr-2"></i>Sport
+                        <button onclick="filterMotors('sport')" class="filter-btn bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:bg-gray-300 transition duration-300 font-medium text-sm sm:text-base touch-button">
+                            <i class="fas fa-tachometer-alt mr-1 sm:mr-2"></i>Sport
                         </button>
                     </div>
                 </div>
             </div>
 
             <!-- Motors Grid -->
-            <div id="motors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="motors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                 <!-- Motor cards will be populated by JavaScript -->
             </div>
         </div>
@@ -307,37 +394,53 @@
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="gallery-item bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor1')">
-                    <div class="text-6xl mb-4">🏍️</div>
-                    <p class="font-semibold">Honda CB150R</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('motor1')">
+                    <img src="https://images.unsplash.com/photo-1625043484555-56535add686c?q=80&w=800" alt="Honda CB150R" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Honda CB150R</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-blue-400 to-indigo-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor2')">
-                    <div class="text-6xl mb-4">🛵</div>
-                    <p class="font-semibold">Yamaha NMAX</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('motor2')">
+                    <img src="https://images.unsplash.com/photo-1626280870389-21115131a3fb?q=80&w=800" alt="Yamaha NMAX" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Yamaha NMAX</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor3')">
-                    <div class="text-6xl mb-4">🏍️</div>
-                    <p class="font-semibold">Kawasaki Ninja</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('motor3')">
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800" alt="Kawasaki Ninja" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Kawasaki Ninja</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('motor4')">
-                    <div class="text-6xl mb-4">🛵</div>
-                    <p class="font-semibold">Honda Vario</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('motor4')">
+                    <img src="https://images.unsplash.com/photo-1620759353339-3c703d051b43?q=80&w=800" alt="Honda Vario" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Honda Vario</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer1')">
-                    <div class="text-6xl mb-4">📸</div>
-                    <p class="font-semibold">Trip Bali</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('customer1')">
+                    <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=800" alt="Trip Bali" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Trip Bali</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer2')">
-                    <div class="text-6xl mb-4">🌄</div>
-                    <p class="font-semibold">Adventure</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('customer2')">
+                    <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800" alt="Adventure" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Adventure</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-teal-400 to-blue-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer3')">
-                    <div class="text-6xl mb-4">🏖️</div>
-                    <p class="font-semibold">Beach Trip</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('customer3')">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=800" alt="Beach Trip" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">Beach Trip</p>
+                    </div>
                 </div>
-                <div class="gallery-item bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl p-8 text-white text-center cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openGalleryModal('customer4')">
-                    <div class="text-6xl mb-4">🌆</div>
-                    <p class="font-semibold">City Tour</p>
+                <div class="gallery-item relative overflow-hidden rounded-2xl cursor-pointer group" onclick="openGalleryModal('customer4')">
+                    <img src="https://images.unsplash.com/photo-1533106418989-88406e76825a?q=80&w=800" alt="City Tour" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-4">
+                        <p class="text-white font-semibold">City Tour</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -355,7 +458,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="testimonial-card p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&h=200&fit=crop" alt="Budi Santoso" class="w-full h-full object-cover">
+                        </div>
                         <div class="ml-4">
                             <h4 class="font-bold">Budi Santoso</h4>
                             <div class="star-rating">
@@ -372,7 +477,9 @@
 
                 <div class="testimonial-card p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-2xl">👩</div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&h=200&fit=crop" alt="Sari Dewi" class="w-full h-full object-cover">
+                        </div>
                         <div class="ml-4">
                             <h4 class="font-bold">Sari Dewi</h4>
                             <div class="star-rating">
@@ -389,7 +496,9 @@
 
                 <div class="testimonial-card p-8 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&fit=crop" alt="Ahmad Rizki" class="w-full h-full object-cover">
+                        </div>
                         <div class="ml-4">
                             <h4 class="font-bold">Ahmad Rizki</h4>
                             <div class="star-rating">
@@ -415,15 +524,15 @@
     </section>
 
     <!-- Booking Section -->
-    <section id="booking" class="py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
+    <section id="booking" class="py-12 sm:py-16 bg-gradient-to-br from-gray-50 to-indigo-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Form Booking</h2>
-                <p class="text-lg text-gray-600">Isi form di bawah untuk melakukan reservasi motor impian Anda</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">Form Booking</h2>
+                <p class="text-base sm:text-lg text-gray-600 px-4">Isi form di bawah untuk melakukan reservasi motor impian Anda</p>
             </div>
 
-            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-                <form id="booking-form" class="space-y-8">
+            <div class="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 md:p-12">
+                <form id="booking-form" class="space-y-6 sm:space-y-8">
                     <!-- Personal Information -->
                     <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-2xl">
                         <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
@@ -590,24 +699,32 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
                 <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
-                    <div class="text-4xl mb-4">📞</div>
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Telepon</h3>
                     <p class="opacity-90">+62 812-3456-7890</p>
                     <p class="opacity-90">+62 821-9876-5432</p>
                 </div>
                 <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
-                    <div class="text-4xl mb-4">📧</div>
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-envelope"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Email</h3>
                     <p class="opacity-90">info@widiasihmotor.com</p>
                     <p class="opacity-90">booking@widiasihmotor.com</p>
                 </div>
                 <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
-                    <div class="text-4xl mb-4">📍</div>
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Alamat</h3>
                     <p class="opacity-90">Jl. Raya Motor No. 123<br>Jakarta Selatan 12345</p>
                 </div>
                 <div class="glass-effect p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
-                    <div class="text-4xl mb-4">⏰</div>
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <h3 class="text-xl font-semibold mb-2">Jam Operasional</h3>
                     <p class="opacity-90">Senin - Minggu<br>08:00 - 22:00 WIB</p>
                 </div>
@@ -639,7 +756,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <div class="text-2xl font-bold mb-4">🏍️ Widiasih Motor</div>
+                    <div class="text-2xl font-bold mb-4">
+                        <i class="fas fa-motorcycle mr-2"></i>Widiasih Motor
+                    </div>
                     <p class="text-gray-400 mb-4">Rental motor premium dengan layanan terbaik untuk perjalanan tak terlupakan Anda.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors">
@@ -736,19 +855,19 @@
     </div>
 
     <!-- Admin Dashboard Modal -->
-    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-full overflow-hidden">
-            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-2 sm:p-4">
+        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-full overflow-hidden mobile-modal">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 sm:p-6">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-2xl font-bold flex items-center">
-                        <i class="fas fa-tachometer-alt mr-3"></i>Admin Dashboard
+                    <h3 class="text-lg sm:text-2xl font-bold flex items-center">
+                        <i class="fas fa-tachometer-alt mr-2 sm:mr-3"></i><span class="hidden xs:inline">Admin Dashboard</span><span class="xs:hidden">Admin</span>
                     </h3>
-                    <button onclick="closeAdminDashboard()" class="text-white hover:text-gray-200">
-                        <i class="fas fa-times text-xl"></i>
+                    <button onclick="closeAdminDashboard()" class="text-white hover:text-gray-200 touch-button p-2">
+                        <i class="fas fa-times text-lg sm:text-xl"></i>
                     </button>
                 </div>
             </div>
-            <div class="p-6 max-h-96 overflow-y-auto">
+            <div class="p-4 sm:p-6 max-h-96 overflow-y-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl">
                         <div class="flex items-center justify-between">
@@ -791,11 +910,13 @@
 
     <!-- Success Modal -->
     <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white p-8 rounded-2xl max-w-md mx-4 text-center">
-            <div class="text-6xl mb-4">✅</div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Booking Berhasil!</h3>
-            <div id="booking-details" class="text-gray-600 mb-6"></div>
-            <button onclick="closeModal('success-modal')" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl max-w-md mx-4 text-center mobile-modal">
+            <div class="text-4xl sm:text-6xl mb-4 text-green-500">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Booking Berhasil!</h3>
+            <div id="booking-details" class="text-sm sm:text-base text-gray-600 mb-6"></div>
+            <button onclick="closeModal('success-modal')" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 touch-button w-full sm:w-auto">
                 Tutup
             </button>
         </div>
@@ -803,11 +924,11 @@
 
     <!-- Gallery Modal -->
     <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 text-center">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Galeri Foto</h3>
-                <button onclick="closeModal('gallery-modal')" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times text-xl"></i>
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 text-center mobile-modal">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <h3 class="text-lg sm:text-2xl font-bold text-gray-900">Galeri Foto</h3>
+                <button onclick="closeModal('gallery-modal')" class="text-gray-500 hover:text-gray-700 touch-button p-2">
+                    <i class="fas fa-times text-lg sm:text-xl"></i>
                 </button>
             </div>
             <div id="gallery-content" class="text-center">
@@ -818,11 +939,11 @@
 
     <!-- Review Modal -->
     <div id="review-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-8">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Tulis Review</h3>
-                <button onclick="closeModal('review-modal')" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times text-xl"></i>
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 mobile-modal">
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <h3 class="text-lg sm:text-2xl font-bold text-gray-900">Tulis Review</h3>
+                <button onclick="closeModal('review-modal')" class="text-gray-500 hover:text-gray-700 touch-button p-2">
+                    <i class="fas fa-times text-lg sm:text-xl"></i>
                 </button>
             </div>
             <form id="review-form" class="space-y-4">
@@ -853,36 +974,36 @@
 
     <script>
         // Motor data with enhanced information
-        const motors = [
+        const motors = [ // Data motor diperbarui dari referensi
             {
                 id: 1,
-                name: "Honda Vario 150",
-                type: "matic",
-                price: 75000,
-                image: "🛵",
-                description: "Motor matic yang nyaman untuk perjalanan dalam kota dengan teknologi terdepan",
-                features: ["Matic", "150cc", "Hemat BBM", "Bagasi Luas", "LED Headlight"],
+                name: "Verza 150 CB CW",
+                type: "manual",
+                price: 80000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_03_Sport_Verza_150_CB_CW_2x1_MT_ca89bd5d97.png",
+                description: "Motor sport tangguh untuk kebutuhan operasional bisnis Anda.",
+                features: ["Manual", "150cc", "Handal", "Irit"],
                 specs: {
-                    engine: "150cc, 4-Stroke",
+                    engine: "150cc",
                     fuel: "Bensin",
-                    transmission: "Automatic",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
-                rating: 4.8,
+                rating: 4.7,
                 available: true
             },
             {
                 id: 2,
-                name: "Yamaha NMAX",
-                type: "matic",
+                name: "CB 150 R",
+                type: "manual",
                 price: 85000,
-                image: "🛵",
-                description: "Motor matic premium dengan performa tinggi dan desain sporty",
-                features: ["Matic", "155cc", "ABS", "Smart Key", "USB Charger"],
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_03_Sport_CB_150_R_150_2x1_MT_4b1a62de1b.png",
+                description: "Motor sport dengan desain agresif dan performa tinggi.",
+                features: ["Manual", "150cc", "Sporty", "Digital Panel"],
                 specs: {
-                    engine: "155cc, 4-Stroke",
+                    engine: "150cc",
                     fuel: "Bensin",
-                    transmission: "Automatic",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
                 rating: 4.9,
@@ -890,16 +1011,16 @@
             },
             {
                 id: 3,
-                name: "Honda CB150R",
+                name: "CB 150 Street Fire",
                 type: "manual",
-                price: 80000,
-                image: "🏍️",
-                description: "Motor sport dengan handling yang responsif dan performa optimal",
-                features: ["Manual", "150cc", "Sport", "LED", "Digital Display"],
+                price: 82000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_03_Sport_CB_150_Street_Fire_2x1_MT_850ee3c870.png",
+                description: "Performa jalanan yang lincah dengan gaya yang modern.",
+                features: ["Manual", "150cc", "Street Fighter", "Lincah"],
                 specs: {
-                    engine: "150cc, 4-Stroke",
+                    engine: "150cc",
                     fuel: "Bensin",
-                    transmission: "Manual 6-Speed",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
                 rating: 4.7,
@@ -907,33 +1028,33 @@
             },
             {
                 id: 4,
-                name: "Kawasaki Ninja 250",
-                type: "sport",
-                price: 120000,
-                image: "🏍️",
-                description: "Motor sport untuk pengalaman berkendara yang menantang dan adrenalin tinggi",
-                features: ["Manual", "250cc", "Sport", "ABS", "Slipper Clutch"],
+                name: "Revo FIT FI",
+                type: "manual",
+                price: 65000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_02_Cub_Revo_FIT_FI_110_2x1_MT_095a220cfc.png",
+                description: "Motor bebek yang irit dan handal untuk mobilitas harian.",
+                features: ["Manual", "110cc", "Ekonomis", "Praktis"],
                 specs: {
-                    engine: "250cc, 4-Stroke Twin",
+                    engine: "110cc",
                     fuel: "Bensin",
-                    transmission: "Manual 6-Speed",
-                    seat: "2 Orang"
+                    transmission: "Manual",
+                    seat: "1 Orang"
                 },
-                rating: 4.9,
+                rating: 4.5,
                 available: true
             },
             {
                 id: 5,
-                name: "Suzuki Satria FU",
+                name: "Revo Spoke FI",
                 type: "manual",
                 price: 70000,
-                image: "🏍️",
-                description: "Motor bebek sporty yang lincah dan ekonomis untuk perjalanan sehari-hari",
-                features: ["Manual", "150cc", "Sporty", "Ekonomis", "Ringan"],
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_02_Cub_Revo_Spoke_FI_110_2x1_MT_1_7dcb2ac762.png",
+                description: "Motor bebek dengan velg jari-jari, tangguh di berbagai medan.",
+                features: ["Manual", "110cc", "Tangguh", "Irit"],
                 specs: {
-                    engine: "150cc, 4-Stroke",
+                    engine: "110cc",
                     fuel: "Bensin",
-                    transmission: "Manual 5-Speed",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
                 rating: 4.5,
@@ -941,16 +1062,33 @@
             },
             {
                 id: 6,
-                name: "Honda PCX 160",
-                type: "matic",
-                price: 90000,
-                image: "🛵",
-                description: "Motor matic premium dengan teknologi terdepan dan kenyamanan maksimal",
-                features: ["Matic", "160cc", "Keyless", "USB Charger", "Smart Key"],
+                name: "Revo Absolute SW New",
+                type: "manual",
+                price: 72000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_02_Cub_Revo_Absolute_SW_New_110_2x1_MT_8258478233.png",
+                description: "Generasi baru Revo yang lebih modern dan efisien.",
+                features: ["Manual", "110cc", "Modern", "Efisien"],
                 specs: {
-                    engine: "160cc, 4-Stroke",
+                    engine: "110cc",
                     fuel: "Bensin",
-                    transmission: "Automatic",
+                    transmission: "Manual",
+                    seat: "1 Orang"
+                },
+                rating: 4.6,
+                available: true
+            },
+            {
+                id: 7,
+                name: "Revo X",
+                type: "manual",
+                price: 73000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_02_Cub_Revo_X_110_2x1_MT_51c44332b2.png",
+                description: "Varian Revo dengan desain paling sporty dan fitur modern.",
+                features: ["Manual", "110cc", "Sporty", "Modern"],
+                specs: {
+                    engine: "110cc",
+                    fuel: "Bensin",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
                 rating: 4.8,
@@ -958,36 +1096,88 @@
             },
             {
                 id: 7,
-                name: "Yamaha R15",
-                type: "sport",
-                price: 110000,
-                image: "🏍️",
-                description: "Motor sport dengan teknologi MotoGP dan performa racing yang memukau",
-                features: ["Manual", "155cc", "Sport", "VVA", "Slipper Clutch"],
+                name: "Supra X SW FI",
+                type: "manual",
+                price: 75000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_02_Cub_Supra_X_SW_FI_125_2x1_MT_e60fc4a982.png",
+                description: "Motor bebek legendaris yang terkenal dengan ketangguhan dan keiritannya.",
+                features: ["Manual", "125cc", "Legendaris", "Irit"],
                 specs: {
-                    engine: "155cc, 4-Stroke",
+                    engine: "125cc",
                     fuel: "Bensin",
-                    transmission: "Manual 6-Speed",
+                    transmission: "Manual",
                     seat: "2 Orang"
                 },
                 rating: 4.8,
                 available: true
             },
             {
-                id: 8,
-                name: "Honda Beat",
+                id: 9,
+                name: "Beat FI Pop ESP CW",
                 type: "matic",
                 price: 65000,
-                image: "🛵",
-                description: "Motor matic compact yang ideal untuk mobilitas perkotaan yang praktis",
-                features: ["Matic", "110cc", "Compact", "Hemat BBM", "Ringan"],
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_01_Matic_Beat_FI_Pop_ESP_CW_110_2x1_AT_57e631c523.png",
+                description: "Matic lincah dan irit, cocok untuk mobilitas perkotaan.",
+                features: ["Matic", "110cc", "Lincah", "Irit"],
                 specs: {
-                    engine: "110cc, 4-Stroke",
+                    engine: "110cc",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.7,
+                available: true
+            },
+            {
+                id: 10,
+                name: "Beat FI Sporty CW",
+                type: "matic",
+                price: 68000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_01_Matic_Beat_FI_Sporty_CW_110_2x1_AT_fa7b2a644e.png",
+                description: "Varian sporty dari Honda Beat dengan desain yang lebih dinamis.",
+                features: ["Matic", "110cc", "Sporty", "Dinamis"],
+                specs: {
+                    engine: "110cc",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.7,
+                available: true
+            },
+            {
+                id: 11,
+                name: "Genio CBS",
+                type: "matic",
+                price: 70000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_01_Matic_Genio_CBS_110_2x1_AT_37f7b45fac.png",
+                description: "Matic retro modern dengan fitur-fitur canggih.",
+                features: ["Matic", "110cc", "Retro", "Modern"],
+                specs: {
+                    engine: "110cc",
                     fuel: "Bensin",
                     transmission: "Automatic",
                     seat: "2 Orang"
                 },
                 rating: 4.6,
+                available: true
+            },
+            {
+                id: 12,
+                name_Lengkap: "PCX 150",
+                name: "PCX 150",
+                type: "matic",
+                price: 90000,
+                image: "https://omnispace.blob.core.windows.net/strapi-prod/2022-09-19/TRAC_01_Matic_PCX_150_2_X1_AT_BENSIN_45ca3d0d14.png",
+                description: "Skutik premium dengan kenyamanan dan teknologi terdepan.",
+                features: ["Matic", "150cc", "Premium", "Nyaman"],
+                specs: {
+                    engine: "150cc",
+                    fuel: "Bensin",
+                    transmission: "Automatic",
+                    seat: "2 Orang"
+                },
+                rating: 4.9,
                 available: true
             }
         ];
@@ -1053,37 +1243,39 @@
             }
             
             motorsGrid.innerHTML = filteredMotors.map(motor => `
-                <div class="motor-card bg-white rounded-3xl shadow-lg overflow-hidden">
-                    <div class="p-8">
-                        <div class="text-center mb-6">
-                            <div class="text-8xl mb-4">${motor.image}</div>
+                <div class="motor-card bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden">
+                    <div class="p-4 sm:p-6 lg:p-8">
+                        <div class="relative h-48 sm:h-56 mb-4 sm:mb-6 rounded-xl sm:rounded-2xl overflow-hidden">
+                            <img src="${motor.image}" alt="${motor.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-center mb-4 sm:mb-6">
                             <div class="flex items-center justify-center mb-2">
-                                <div class="star-rating mr-2">
+                                <div class="star-rating mr-2 text-sm sm:text-base">
                                     ${generateStars(motor.rating)}
                                 </div>
-                                <span class="text-sm text-gray-600">(${motor.rating})</span>
+                                <span class="text-xs sm:text-sm text-gray-600">(${motor.rating})</span>
                             </div>
                             ${motor.available ? 
-                                '<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Tersedia</span>' :
-                                '<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">Tidak Tersedia</span>'
+                                '<span class="bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs font-medium">Tersedia</span>' :
+                                '<span class="bg-red-100 text-red-800 px-2 sm:px-3 py-1 rounded-full text-xs font-medium">Tidak Tersedia</span>'
                             }
                         </div>
                         
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3 text-center">${motor.name}</h3>
-                        <p class="text-gray-600 mb-6 text-center">${motor.description}</p>
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 text-center">${motor.name}</h3>
+                        <p class="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 text-center">${motor.description}</p>
                         
-                        <div class="mb-6">
-                            <h4 class="font-semibold text-gray-900 mb-3">Fitur Utama:</h4>
-                            <div class="flex flex-wrap gap-2">
+                        <div class="mb-4 sm:mb-6">
+                            <h4 class="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">Fitur Utama:</h4>
+                            <div class="flex flex-wrap gap-1 sm:gap-2">
                                 ${motor.features.map(feature => `
-                                    <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full font-medium">${feature}</span>
+                                    <span class="bg-indigo-100 text-indigo-800 text-xs px-2 sm:px-3 py-1 rounded-full font-medium">${feature}</span>
                                 `).join('')}
                             </div>
                         </div>
                         
-                        <div class="mb-6 bg-gray-50 p-4 rounded-2xl">
-                            <h4 class="font-semibold text-gray-900 mb-3">Spesifikasi:</h4>
-                            <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="mb-4 sm:mb-6 bg-gray-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl">
+                            <h4 class="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">Spesifikasi:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-2 text-xs sm:text-sm">
                                 <div><span class="text-gray-600">Mesin:</span> ${motor.specs.engine}</div>
                                 <div><span class="text-gray-600">Transmisi:</span> ${motor.specs.transmission}</div>
                                 <div><span class="text-gray-600">Bahan Bakar:</span> ${motor.specs.fuel}</div>
@@ -1091,18 +1283,18 @@
                             </div>
                         </div>
                         
-                        <div class="flex justify-between items-center mb-6">
-                            <div>
-                                <span class="text-3xl font-bold text-indigo-600">Rp ${motor.price.toLocaleString('id-ID')}</span>
-                                <span class="text-gray-500">/hari</span>
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6">
+                            <div class="text-center sm:text-left">
+                                <span class="text-2xl sm:text-3xl font-bold text-indigo-600">Rp ${motor.price.toLocaleString('id-ID')}</span>
+                                <span class="text-sm sm:text-base text-gray-500">/hari</span>
                             </div>
                         </div>
                         
-                        <div class="flex gap-3">
-                            <button onclick="selectMotor(${motor.id})" class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 font-semibold">
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                            <button onclick="selectMotor(${motor.id})" class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 sm:px-6 py-3 rounded-xl hover:from-indigo-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 font-semibold text-sm sm:text-base touch-button">
                                 <i class="fas fa-calendar-check mr-2"></i>Booking
                             </button>
-                            <button onclick="showMotorDetails(${motor.id})" class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl hover:bg-gray-200 transition duration-300">
+                            <button onclick="showMotorDetails(${motor.id})" class="bg-gray-100 text-gray-700 px-4 py-3 rounded-xl hover:bg-gray-200 transition duration-300 touch-button">
                                 <i class="fas fa-info-circle"></i>
                             </button>
                         </div>
@@ -1172,8 +1364,10 @@
             
             detailsDiv.innerHTML = `
                 <div class="flex items-center mb-4">
-                    <div class="text-4xl mr-4">${motor.image}</div>
-                    <div>
+                    <div class="w-20 h-20 mr-4 rounded-lg overflow-hidden flex-shrink-0">
+                        <img src="${motor.image}" alt="${motor.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-grow">
                         <h4 class="text-lg font-bold text-gray-900">${motor.name}</h4>
                         <div class="star-rating">
                             ${generateStars(motor.rating)}
@@ -1693,21 +1887,23 @@
         function openGalleryModal(imageId) {
             const galleryContent = document.getElementById('gallery-content');
             const galleries = {
-                motor1: { title: 'Honda CB150R', content: '🏍️', description: 'Motor sport dengan performa tinggi dan desain agresif' },
-                motor2: { title: 'Yamaha NMAX', content: '🛵', description: 'Motor matic premium dengan teknologi terdepan' },
-                motor3: { title: 'Kawasaki Ninja', content: '🏍️', description: 'Motor sport untuk pengalaman berkendara yang menantang' },
-                motor4: { title: 'Honda Vario', content: '🛵', description: 'Motor matic yang nyaman untuk perjalanan sehari-hari' },
-                customer1: { title: 'Trip ke Bali', content: '🏖️', description: 'Pelanggan menikmati perjalanan indah di Bali' },
-                customer2: { title: 'Adventure', content: '🌄', description: 'Petualangan seru di pegunungan' },
-                customer3: { title: 'Beach Trip', content: '🏖️', description: 'Perjalanan santai ke pantai' },
-                customer4: { title: 'City Tour', content: '🌆', description: 'Jelajahi kota dengan motor kami' }
+                motor1: { title: 'Honda CB150R', image: 'https://images.unsplash.com/photo-1625043484555-56535add686c?q=80&w=800', description: 'Motor sport dengan performa tinggi dan desain agresif' },
+                motor2: { title: 'Yamaha NMAX', image: 'https://images.unsplash.com/photo-1626280870389-21115131a3fb?q=80&w=800', description: 'Motor matic premium dengan teknologi terdepan' },
+                motor3: { title: 'Kawasaki Ninja', image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800', description: 'Motor sport untuk pengalaman berkendara yang menantang' },
+                motor4: { title: 'Honda Vario', image: 'https://images.unsplash.com/photo-1620759353339-3c703d051b43?q=80&w=800', description: 'Motor matic yang nyaman untuk perjalanan sehari-hari' },
+                customer1: { title: 'Trip ke Bali', image: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=800', description: 'Pelanggan menikmati perjalanan indah di Bali' },
+                customer2: { title: 'Adventure', image: 'https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=800', description: 'Petualangan seru di pegunungan' },
+                customer3: { title: 'Beach Trip', image: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=800', description: 'Perjalanan santai ke pantai' },
+                customer4: { title: 'City Tour', image: 'https://images.unsplash.com/photo-1533106418989-88406e76825a?q=80&w=800', description: 'Jelajahi kota dengan motor kami' }
             };
             
             const gallery = galleries[imageId];
             galleryContent.innerHTML = `
-                <div class="text-8xl mb-6">${gallery.content}</div>
-                <h4 class="text-2xl font-bold text-gray-900 mb-4">${gallery.title}</h4>
-                <p class="text-gray-600">${gallery.description}</p>
+                <div class="rounded-xl overflow-hidden mb-4">
+                    <img src="${gallery.image}" alt="${gallery.title}" class="w-full h-auto object-contain max-h-96">
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">${gallery.title}</h4>
+                <p class="text-gray-600 text-sm">${gallery.description}</p>
             `;
             
             document.getElementById('gallery-modal').classList.remove('hidden');
@@ -1740,5 +1936,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b4f71230f319d2',t:'MTc1OTkxOTQ1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b5086bf3f3d3c5',t:'MTc1OTkyMDE2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
